@@ -3,20 +3,32 @@ create database examen;
 use examen;
 
 #tablas 
+create table usuario(
+id_usuario int auto_increment,
+nombre_user varchar(50),
+);
 
 create table categoria(
 id_categoria int auto_increment,
-nombre varchar (20) not null,
+nombre_cat varchar (20) not null,
 primary key (id_categoria) 
 );
 
 create table examen(
-id_examen int auto_increment, 
-total_preguntas int, 
-cat_examen int,
+id_examen int auto_increment not null, 
+numero_preguntas int not null, 
+cat_examen int not null ,
 primary key (id_examen),
 foreign key (cat_examen) references categoria(id_categoria) 
 );
+create table preguntas(
+id_pregunta int auto_increment not null, 
+enunciado varchar(255) not null, 
+repuesta_correcta int not null,
+primary key (id_pregunta), 
+);
+
+
 
 #------------------INSERCIONES------------------- 
 insert into categoria (nombre) values('java');
