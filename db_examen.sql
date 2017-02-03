@@ -18,6 +18,7 @@ primary key (id_examen),
 foreign key (cat_examen) references categoria(id_categoria) 
 );
 
+#------------------INSERCIONES------------------- 
 insert into categoria (nombre) values('java');
 insert into categoria (nombre) values('asp.net');
 insert into categoria (nombre) values('php');
@@ -25,7 +26,7 @@ select * from categoria;
 insert into examen(total_preguntas,cat_examen) values (10,2);
 insert into examen(total_preguntas,cat_examen) values (10,3);
 
+#------------------CONSULTAS---------------------- 
 
 select * from examen;
-
 select categoria.nombre, examen.id_examen, examen.total_preguntas from categoria, examen where examen.cat_examen=categoria.id_categoria;
