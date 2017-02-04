@@ -19,8 +19,10 @@ create table examen(
 id_examen int auto_increment not null, 
 numero_preguntas int not null, 
 cat_examen int not null ,
+usuario_asignado int not null,
 primary key (id_examen),
-foreign key (cat_examen) references categoria(id_categoria) 
+foreign key (cat_examen) references categoria(id_categoria),
+foreign key (usuario_asignado) references usuario(id_usuario)
 );
 
 create table respuestas(
@@ -43,17 +45,30 @@ foreign key (res_correcta) references respuestas (id_respuesta)
 
 
 
-#------------------INSERCIONES------------------- 
+#------------------INSERCIONES-------------------
+
+/*--------- Insercion en la tabla Usuario  --------  */
+insert into usuario(nombre_user) values("Braulio Chavez Miranda");
+insert into usuario(nombre_user) values("Jose Maria Miranda");
+insert into usuario(nombre_user) values("Damaso Gutierrez Aguado");
+
+
+
+/*--------- Insercion en la tabla Categoria   --------  */
+
+
 insert into categoria (nombre_cat) values('java');
 insert into categoria (nombre_cat) values('asp.net');
 insert into categoria (nombre_cat) values('php');
-insert into examen(numero_preguntas,cat_examen) values (10,2);
-insert into examen(numero_preguntas,cat_examen) values (10,3);
-insert into examen(numero_preguntas,cat_examen) values (20,3);
-insert into examen(numero_preguntas,cat_examen) values (40,3);
-insert into examen(numero_preguntas,cat_examen) values (50,3);
-insert into examen(numero_preguntas,cat_examen) values (60,3);
-insert into examen(numero_preguntas,cat_examen) values (90,3);
+
+/*--------- Insercion en la tabla Examen   --------  */
+insert into examen(numero_preguntas,cat_examen,usuario_asignado) values (10,2,2);
+insert into examen(numero_preguntas,cat_examen,usuario_asignado) values (10,3,2);
+insert into examen(numero_preguntas,cat_examen,usuario_asignado) values (20,3,3);
+insert into examen(numero_preguntas,cat_examen,usuario_asignado) values (40,3,2);
+insert into examen(numero_preguntas,cat_examen,usuario_asignado) values (50,3,1);
+insert into examen(numero_preguntas,cat_examen,usuario_asignado) values (60,3,1);
+insert into examen(numero_preguntas,cat_examen,usuario_asignado) values (90,3,3);
 
 
 
