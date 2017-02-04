@@ -88,4 +88,8 @@ select count(*) as total_examen, categoria.nombre_cat from examen,categoria wher
 #Examen que pertenecena a cada categoria
 select categoria.nombre_cat, id_examen ,numero_preguntas from categoria,examen where examen.cat_examen=categoria.id_categoria;
 
+#Cuantos examenes tiene asignado un usuario de que categoria y cuales son
+
+select count(*) as total_examen, categoria.nombre_cat, usuario.nombre_user from examen,categoria,usuario where examen.cat_examen=categoria.id_categoria 
+and usuario.id_usuario=usuario_asignado;
 
