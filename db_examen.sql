@@ -20,7 +20,8 @@ create table categoria(
 id_categoria int auto_increment,
 nombre_cat varchar (20) not null,
 nivel_cat int not null,
-primary key (id_categoria) 
+primary key (id_categoria),
+foreign key (nivel_cat) references nivel(id_nivel)
 );
 
 create table examen(
@@ -33,13 +34,6 @@ foreign key (cat_examen) references categoria(id_categoria),
 foreign key (usuario_asignado) references usuario(id_usuario)
 );
 
-create table respuestas(
-
-id_respuesta int auto_increment,
-respuesta text,
-primary key (id_respuesta)
-
-);
 
 create table preguntas(
 id_pregunta int auto_increment not null, 
@@ -49,7 +43,13 @@ primary key (id_pregunta),
 foreign key (res_correcta) references respuestas (id_respuesta) 
 );
 
+create table respuestas(
 
+id_respuesta int auto_increment,
+respuesta text,
+primary key (id_respuesta)
+
+);
 
 
 
@@ -73,7 +73,7 @@ insert into nivel (nivel) values('Avanzado');
 
 insert into categoria (nombre_cat,nivel_cat) values('java',1);
 insert into categoria (nombre_cat,nivel_cat) values('asp.net',2);
-insert into categoria (nombre_cat,nivel_cat) values('php',1);
+insert into categoria (nombre_cat,nivel_cat) values('php',2);
 
 /*--------- Insercion en la tabla Examen   --------  */
 insert into examen(numero_preguntas,cat_examen,usuario_asignado) values (10,2,2);
@@ -84,10 +84,17 @@ insert into examen(numero_preguntas,cat_examen,usuario_asignado) values (50,3,1)
 insert into examen(numero_preguntas,cat_examen,usuario_asignado) values (60,3,1);
 insert into examen(numero_preguntas,cat_examen,usuario_asignado) values (90,3,3);
 
+/*--------- Insercion en la tabla   --------  */
+
+
+
+
 #-----------------CONSULTAS POR TABLA------------------
 
 select * from examen;
 select * from categoria;
+select * from nivel;
+select * from preguntas;
 
 
 #------------------CONSULTAS---------------------- 
